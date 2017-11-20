@@ -1,3 +1,4 @@
+import urllib.request
 
 
 def show_result(answer):
@@ -12,3 +13,11 @@ def text_from_file(filename):
         result += line
     text_file.close()
     return result
+
+
+def download_file_if_necessary(url, local_path):
+    try:
+        with open(local_path, "r") as _:
+            pass
+    except:
+        urllib.request.urlretrieve(url, local_path)
