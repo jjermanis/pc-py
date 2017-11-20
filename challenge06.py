@@ -17,9 +17,8 @@ with zipfile.ZipFile(LOCAL_ZIP_PATH) as channel_zip:
         comments += channel_zip.getinfo(file_name).comment.decode("utf-8")
         if data == "Collect the comments.":
             break
+        #PyCharm flags this (spuriously).  It's fine: curr is used in the string interpolation 
         curr = data[16:]
-
-# it's in the air. look at the letters.
 print(comments)
 
 print("As you can see, this does not print the result in a traditional format.")
