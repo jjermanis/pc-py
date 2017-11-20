@@ -2,7 +2,7 @@ import urllib.request
 import pickle
 
 # This resource is identified in the page source
-url = f"http://www.pythonchallenge.com/pc/def/banner.p"
+url = "http://www.pythonchallenge.com/pc/def/banner.p"
 data = pickle.loads(urllib.request.urlopen(url).read())
 
 for row in data:
