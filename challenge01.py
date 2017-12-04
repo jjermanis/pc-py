@@ -1,13 +1,16 @@
+#!/usr/bin/env python3
+
 from string import ascii_lowercase
+from common import show_def_result
 
 # The hint on the page.  The images indicates that each character should be rotated forward two spots.
 # When decrypted, this hint suggests using maketrans()... which is deprecated in Python3.
-hint = """g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle gr gl zw fylb gq
+HINT = """g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle gr gl zw fylb gq
 glcddgagclr ylb rfyr'q ufw rfgq rcvr gq qm jmle. sqgle qrpgle.kyicrpylq() gq pcamkkclbcb. 
 lmu ynnjw ml rfc spj."""
 
 # The hint, when decrypted, indicates to decrypt the URL... well, not the _whole_ URL
-url_fragment = "map"
+URL_FRAGMENT = "map"
 
 # Map lower case characters to the characters two spot forward
 left = ascii_lowercase
@@ -24,7 +27,12 @@ def decrypt(x):
     return ''.join(translate(c) for c in x)
 
 
-print(f"Message: {decrypt(hint)}")
-print()
-answer = decrypt(url_fragment)
-print(f"http://www.pythonchallenge.com/pc/def/{answer}.html")
+def main():
+    print(f"Message: {decrypt(HINT)}")
+    print()
+    answer = decrypt(URL_FRAGMENT)
+    show_def_result(answer)
+
+
+if __name__ == "__main__":
+    main()
