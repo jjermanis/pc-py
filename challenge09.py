@@ -1,8 +1,13 @@
+#!/usr/bin/env python3
+
 # Requires pillow, the Python3 version of PIL
 # Be sure to pip3 pillow
 from PIL import Image, ImageDraw
+from common import authentication_help
 
-first = [
+# PEP8 objects to the lack of spaces.  This is the format from the challenge, and if add spaces automatically,
+# it'll break the 120-column PEP8 rule.  I'm just leaving it.
+FIRST = [
     146,399,163,403,170,393,169,391,166,386,170,381,170,371,170,355,169,346,167,335,170,329,170,320,170,
     310,171,301,173,290,178,289,182,287,188,286,190,286,192,291,194,296,195,305,194,307,191,312,190,316,
     190,321,192,331,193,338,196,341,197,346,199,352,198,360,197,366,197,373,196,380,197,383,196,387,192,
@@ -22,20 +27,28 @@ first = [
     111,156,113,170,115,185,118,208,117,223,121,239,128,251,133,259,136,266,139,276,143,290,148,310,151,
     332,155,348,156,353,153,366,149,379,147,394,146,399]
 
-second = [
+SECOND = [
     156,141,165,135,169,131,176,130,187,134,191,140,191,146,186,150,179,155,175,157,168,157,163,157,159,
     157,158,164,159,175,159,181,157,191,154,197,153,205,153,210,152,212,147,215,146,218,143,220,132,220,
     125,217,119,209,116,196,115,185,114,172,114,167,112,161,109,165,107,170,99,171,97,167,89,164,81,162,
     77,155,81,148,87,140,96,138,105,141,110,136,111,126,113,129,118,117,128,114,137,115,146,114,155,115,
     158,121,157,128,156,134,157,136,156,136]
 
-max_val = max(first)
-min_val = min(first)
-image = Image.new("RGB", (max_val+min_val, max_val+min_val))
-draw = ImageDraw.Draw(image)
-draw.polygon(first)
-draw.polygon(second)
-image.show()
 
-print("As you can see, this does not print the result in a traditional format.")
-print("Use the standard format of: http://www.pythonchallenge.com/pc/return/{answer}.html")
+def main():
+    # Calculate extents of image.  Ignore whether coordinates are x or y
+    max_val = max(FIRST + SECOND)
+    min_val = min(FIRST + SECOND)
+    # By making the size max_min, the effect is to create a (more or less) centered image with a margin
+    image = Image.new("RGB", (max_val+min_val, max_val+min_val))
+    draw = ImageDraw.Draw(image)
+    draw.polygon(FIRST)
+    draw.polygon(SECOND)
+    image.show()
+
+    print("As you can see, this does not print the result in a traditional format.")
+    print("Use the standard format of: http://www.pythonchallenge.com/pc/return/{answer}.html")
+    authentication_help()
+
+if __name__ == "__main__":
+    main()
