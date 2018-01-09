@@ -1,5 +1,6 @@
 import urllib.request
-from challenge08 import get_credentials
+import challenge08
+
 
 def show_def_result(answer):
     print(f"Answer - http://www.pythonchallenge.com/pc/def/{answer}.html")
@@ -9,7 +10,13 @@ def show_def_result(answer):
 def show_return_result(answer):
     print(f"Answer - http://www.pythonchallenge.com/pc/return/{answer}.html")
     print(f"(to go to the solution page, visit http://www.pythonchallenge.com/pcc/return/{answer}.html)")
-    authentication_help()
+    authentication_help("return")
+
+
+def show_hex_result(answer):
+    print(f"Answer - http://www.pythonchallenge.com/pc/hex/{answer}.html")
+    print(f"(to go to the solution page, visit http://www.pythonchallenge.com/pcc/hex/{answer}.html)")
+    authentication_help("hex")
 
 
 def text_from_file(filename):
@@ -38,8 +45,13 @@ def does_file_exist(filename, challenge_name):
         return False
 
 
-def authentication_help():
+def authentication_help(folder):
     print("You may be prompted for simple auth credentials.  Here they are if you need them.")
-    username, password = get_credentials()
-    print(f"Username: {username}")
-    print(f"Password: {password}")
+    if folder == "return":
+        username, password = challenge08.get_credentials()
+        print(f"Username: {username}")
+        print(f"Password: {password}")
+    elif folder == "hex":
+        print("For this username and password, run challenge18 and look at the c18_ files.")
+    else:
+        raise Exception(f"Unknown folder: {folder}")
