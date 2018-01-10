@@ -48,7 +48,7 @@ def main():
 
     print("As you can see, this does not print the result in a traditional format.")
     print("Use the standard format of: http://www.pythonchallenge.com/pc/return/{answer}.html")
-    authentication_help()
+    authentication_help("return")
 
 if __name__ == "__main__":
     main()

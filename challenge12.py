@@ -28,7 +28,7 @@ def main():
     print("Open image files 0.jpg, 1.png, 2.gif, and 3.png to get the answer.")
     print("4.jpg is not necessary - the image shows crossed out text.")
     print("3.png is damaged.  Try different image viewers.  If that doesn't work... it says 'ional'.")
-    authentication_help()
+    authentication_help("return")
 
 
 if __name__ == "__main__":
